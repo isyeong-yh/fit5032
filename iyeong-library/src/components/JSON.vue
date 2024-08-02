@@ -111,13 +111,33 @@
         <section class="lab-section">
             <h2>Attribute, Class and Style Binding with <code>v-bind</code></h2>
             <p>Highlighting Specific Authors:</p>
+            <ul>
+                <li v-for="author in authors" :key="author"
+                    :class="{ highlight: author.name === 'George Orwell' }"
+                    :style="author.name === 'George Orwell' ? { color: 'red' } : {}">
+                {{ author }}
+                </li>
+            </ul>
 
         </section>
+
     </div>
+    <div :style="{ color: textColor, fontSize: fontSize + 'pv' }">George Orwell</div>
+    <div>
+        <img :src="imageUrl" alt="Dynamic Image">
+        <button :class="{ active: isActive }">Toggle</button>
+    </div>
+            
 </template>
 
 <script setup>
 import { ref, computed } from "vue"
+
+// Sheet 5: Attribute, Class and Style Bindings
+const imageUrl = ref('https://rlo.acton.org/wp-content/uploads/2023/10/im-784561.jpeg')
+const isActive = ref(true)
+const textColor = ref('blue')
+const fontSize = ref(36)
 
 // Activity 1: Import JSON files (authors.json and bookstores.json)
 // TODO: CODE TO IMPORT JSON FILES HERE
