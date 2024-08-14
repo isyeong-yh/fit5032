@@ -1,6 +1,7 @@
 <script setup>
 // import HelloWorld from './components/HelloWorld.vue'
-import JSON from './components/JSON.vue'
+// import JSON from './components/JSON.vue'
+import LoginForm from "./components/LoginForm.vue"
 </script>
 
 <template>
@@ -13,7 +14,8 @@ import JSON from './components/JSON.vue'
   </header> -->
 
   <main>
-    <JSON />
+    <!-- <JSON /> -->
+    <LoginForm />
   </main>
 </template>
 
@@ -27,7 +29,7 @@ header {
   margin: 0 auto 2rem;
 }
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   header {
     display: flex;
     place-items: center;
@@ -43,5 +45,5 @@ header {
     place-items: flex-start;
     flex-wrap: wrap;
   }
-}
+} */
 </style>
