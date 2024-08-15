@@ -55,18 +55,32 @@
                         <div v-if="errors.reason" class="text-danger">{{ errors.reason }}</div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary me-2" @click="submitForm">Submit</button>
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
                         <button type="button" class="btn btn-secondary" @click="clearForm">Clear</button>
                     </div>
                 </form>
+                
             </div>
         </div>
-        <div class="row mt-5" v-if="submittedCards.length">
+        <div class="col-md-12">
+            <DataTable :value="submittedCards" tableStyle="min-width: 50rem">
+                <Column field="username" header="Username"></Column>
+                <Column field="password" header="Password"></Column>
+                <Column field="gender" header="Gender"></Column>
+                <Column field="isAustralian" header="Australian Resident"></Column>
+                <Column field="reason" header="Reason"></Column>
+            </DataTable>
+        </div>
+        
+
+        
+        <!-- <div class="row mt-5" v-if="submittedCards.length">
             <div class="d-flex flex-wrap justify-content-start">
                 <div v-for="(card, index) in submittedCards" :key="index" class="card m-2" style="width: 18rem;">
                     <div class="card-header">
                         User Information
                     </div>
+                    
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Username: {{ card.username }}</li>
                         <li class="list-group-item">Password: {{ card.password }}</li>
@@ -76,7 +90,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -85,6 +99,10 @@
 <script setup>
     // Our logic will go here
     import { ref } from 'vue';
+    import DataTable from 'primevue/datatable';
+    import Column from 'primevue/column';
+    import ColumnGroup from 'primevue/columngroup';   // optional
+    import Row from 'primevue/row';                   // optional
   
     const formData = ref({
         username: '',
@@ -98,6 +116,10 @@
 
     const submitForm = () => {
         validateName(true);
+        validatePassword(true);
+        validateResidency(true);
+        validateGender(true);
+        validateReason(true);
         if (!errors.value.username 
             && !errors.value.password 
             && !errors.value.isAustralian 
