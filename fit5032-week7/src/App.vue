@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <header v-if="showContainer">
+    <header>
       <BHeader />
     </header>
 
